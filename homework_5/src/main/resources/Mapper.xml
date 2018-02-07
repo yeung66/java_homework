@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!--相当于UserMapper接口的实现 namespace必须是UserMapper类路径-->
+<mapper namespace="database.Mapper">
+    <!-- findById必须和接口中的方法名一样 返回一个User-->
+    <select id="findById" parameterType="String"
+            resultType="vo.Program">
+        select * from program where id=#{id}
+    </select>
+
+    <insert id="insertProgram" parameterType="vo.Program">
+        INSERT INTO program VALUES (#{id},#{country},#{university},#{school},#{program_Name},
+        #{homepage},#{location},#{email},#{phone_Number},#{degree},#{deadline_With_Aid},#{deadline_Without_Aid})
+    </insert>
+
+    <select id="findPrograms" parameterType="String" resultType="vo.Program">
+        select DISTINCT *  FROM program
+        WHERE
+        concat(university,",",program_name,",",degree,",",country) LIKE concat("%",#{text},"%")
+    </select>
+
+    <update id="updateById" parameterType="vo.Program">
+        UPDATE program
+        set school=#{school},
+            program_name=#{program_Name},
+            university=#{university}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById" parameterType="String">
+        DELETE FROM program WHERE id=#{id}
+    </delete>
+</mapper>
+

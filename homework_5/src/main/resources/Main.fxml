@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="912.0000389648412" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.Controller">
+  <children>
+    <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="912.0" useSystemMenuBar="false">
+      <menus>
+        <Menu mnemonicParsing="false" text="爬虫">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#runSpider" text="爬取信息并导入数据库" fx:id="itemSpider" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <SplitPane dividerPositions="0.0650887573964497" focusTraversable="true" layoutX="21.0" layoutY="50.0" orientation="VERTICAL" prefHeight="678.0" prefWidth="877.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="579.0">
+          <children>
+            <Label layoutX="14.0" layoutY="12.0" text="搜索栏" />
+            <TextField fx:id="inputText" layoutX="77.0" layoutY="9.0" prefWidth="511.0" />
+            <Button layoutX="606.0" layoutY="8.0" mnemonicParsing="false" onAction="#searchProgram" prefWidth="116.0" text="搜索" />
+            <Button layoutX="745.0" layoutY="8.0" mnemonicParsing="false" onAction="#remove" prefWidth="116.0" text="清空" />
+          </children>
+        </AnchorPane>
+        <AnchorPane fx:id="bottom" minHeight="0.0" minWidth="0.0" prefHeight="629.0" prefWidth="579.0">
+          <children>
+            <TableView fx:id="tableData" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="560.0" prefWidth="847.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="国家" fx:id="tCountry" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="202.0" text="学校" fx:id="tUniversity" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="337.0" resizable="true" text="项目名" fx:id="tProgramName" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" resizable="true" text="学位" fx:id="tDegree" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="142.0" resizable="true" text="学院" fx:id="tSchool" />
+              </columns>
+            </TableView>
+            <Button layoutX="105.0" layoutY="585.0" mnemonicParsing="false" onAction="#goFirstPage" prefWidth="91.0" text="首页" />
+            <Button contentDisplay="CENTER" layoutX="216.0" layoutY="586.0" mnemonicParsing="false" onAction="#goPreviousPage" prefWidth="91.0" text="上一页" />
+            <Button contentDisplay="CENTER" layoutX="328.0" layoutY="585.0" mnemonicParsing="false" onAction="#goNextPage" prefWidth="91.0" text="下一页" />
+            <Button layoutX="445.0" layoutY="586.0" mnemonicParsing="false" onAction="#goLastPage" prefWidth="91.0" text="尾页" />
+            <Button layoutX="750.0" layoutY="587.0" mnemonicParsing="false" onAction="#goSpecPage" prefWidth="91.0" text="跳转" />
+            <TextField fx:id="inputPage" layoutX="570.0" layoutY="585.0" prefHeight="31.0" prefWidth="84.0" />
+            <Label fx:id="l_pageCount" layoutX="665.0" layoutY="588.0" prefHeight="29.0" prefWidth="67.0" text="" />
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+    <Label fx:id="tips" alignment="CENTER" layoutX="368.0" layoutY="28.0" prefWidth="176.0" text="双击查看详细信息" visible="false" />
+  </children>
+</AnchorPane>
